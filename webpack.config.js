@@ -89,6 +89,7 @@ module.exports = ({ mode }) => webpackMerge(
       host: '127.0.0.1',
       port: portFinderSync.getPort(8085),
       historyApiFallback: true,
+      open: true
     },
     plugins,
   },

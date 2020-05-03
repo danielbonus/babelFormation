@@ -58,6 +58,7 @@
   "license": "ISC",
   "homepage": "https://gitlab.com/duplexAscensores/starter-kit-lit-element/-/blob/master/README.md",
   "dependencies": {
+    "@vaadin/router": "^1.7.2",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "core-js": "3",
     "lit-element": "^2.3.0"
