@@ -36,7 +36,9 @@ class appBabelFormation extends LitElement {
                 </section>
                 <section class="container-menu">
                     <ul>
-                        <li>Novedades</li>
+                        <li>
+                            <a href="/news">Novedades</a>
+                        </li>
                     </ul>
                 </section>
             </nav>

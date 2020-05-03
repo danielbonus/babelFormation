@@ -20,10 +20,10 @@ class babelFormationNewsFilms extends LitElement {
   render() {
     return html`
         <section class="container-page">
-
+            <h1>Pagina novedades peliculas</h1>
         </section>
     `;
   }
 }
 
-window.customElements.define('app-babel-formation-news-films', babelFormationNewsFilms);
+window.customElements.define('babel-formation-news-films', babelFormationNewsFilms);
