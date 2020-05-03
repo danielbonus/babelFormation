@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import '../src/component-example';
+import '../src/app-babel-formation';
 
 export default {
   title: 'Welcome',

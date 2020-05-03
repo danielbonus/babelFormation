@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-class Component extends LitElement {
+class babelFormationNewsFilms extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -19,9 +19,11 @@ class Component extends LitElement {
 
   render() {
     return html`
-      <h1>Example complement</h1>
+        <section class="container-page">
+
+        </section>
     `;
   }
 }
 
-window.customElements.define('component-example', Component);
+window.customElements.define('app-babel-formation-news-films', babelFormationNewsFilms);

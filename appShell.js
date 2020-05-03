@@ -1,1 +1,1 @@
-require('./src/component-example');
+require('./src/app-babel-formation');
