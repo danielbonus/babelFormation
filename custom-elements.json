@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "starter-kit-litelement",
+      "properties": [
+        {
+
+        }
+      ],
+      "events": [],
+      "slots": [],
+      "cssProperties": []
+    }
+  ]
+}

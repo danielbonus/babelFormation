@@ -1,0 +1,105 @@
+image: node:12.16.0
+stages:
+  - install
+  - build
+  - test
+  - deploy
+
+
+# Variables CI
+variables:
+  GITLAB_USER_NAME: 'danielBonus'
+  GITLAB_USER_EMAIL: 'daniel@bidibonus.com'
+  PROJECT_SSH_URL: 'git@gitlab.com:duplexAscensores/starter-kit-lit-element.git'
+  PROJECT_FOLDER: 'starter-kit-lit-element'
+  GITLAB_SSH_URL: 'git@gitlab.com '
+  GITLAB_URL: 'gitlab.com'
+
+# Job install
+install:dependencies:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    expire_in: 1hr
+    paths:
+      - node_modules/
+  cache:
+    paths:
+      - node_modules/
+
+# Job testing
+karma:test:
+  stage: test
+  variables:
+    CHROME_BIN: google-chrome
+  dependencies:
+    - install:dependencies
+  before_script:
+    - apt-get update && apt-get install -y apt-transport-https
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    - apt-get update && apt-get install -y google-chrome-stable
+  script:
+    - npm run test:ci
+
+
+# Job build
+build:package:
+  stage: build
+  dependencies:
+    - install:dependencies
+  script:
+    - npm run build
+  artifacts:
+    expire_in: 1hr
+    paths:
+      - dist/
+
+
+#Job deploy
+deploy:package:
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir  -p ~/.ssh
+    - chmod  700 ~/.ssh
+    - ssh-keyscan $GITLAB_URL >> ~/.ssh/known_hosts
+    - chmod  644 ~/.ssh/known_hosts
+    - ssh  -T $GITLAB_SSH_URL
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    - git config --global user.name "$GITLAB_USER_NAME"
+    - git clone $PROJECT_SSH_URL /$PROJECT_FOLDER
+    - cd  /$PROJECT_FOLDER
+    - git checkout $CI_COMMIT_REF_NAME
+    - git reset --hard
+    - git fetch --tags
+  script:
+    - npm install
+    - npm run build
+    - npx semantic-release -b $CI_COMMIT_REF_NAME
+  when: manual
+  dependencies:
+    - build:package
+  only:
+    refs:
+      - master
+
+
+#Job deploy pages
+pages:
+  stage: deploy
+  dependencies:
+    - build:package
+  script:
+    - mkdir public
+    - mv ./dist/* ./public/
+  artifacts:
+    paths:
+      - public
+  environment:
+    name: production
+  only:
+    - master
