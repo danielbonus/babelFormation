@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { initRouter } from './utils/router';
 
 class appBabelFormation extends LitElement {
   static get styles() {
@@ -12,7 +11,6 @@ class appBabelFormation extends LitElement {
 
   firstUpdated() {
     super.firstUpdated();
-    initRouter(this);
 
   }
 
@@ -27,21 +25,7 @@ class appBabelFormation extends LitElement {
   render() {
     return html`
         <header>
-            <nav>
-                <section class="container-search">
-                   <form action="">
-                        <input type="search">
-                        <button type="submit">Buscar</button>
-                   </form>
-                </section>
-                <section class="container-menu">
-                    <ul>
-                        <li>
-                            <a href="/news">Novedades</a>
-                        </li>
-                    </ul>
-                </section>
-            </nav>
+
         </header>
         <main>
 
