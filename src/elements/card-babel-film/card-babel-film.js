@@ -1,36 +1,35 @@
-import { LitElement, html, css  } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 
-class cardBabelFilm extends LitElement {
-  static get  styles() {
-    return [
-      css `
-        :host {
-          display: block;
-        }
-      `
-    ]
-  }
-
-  static get properties() {
-    return {
-      title: { type: String },
-      data: { type: Array }
-    }
-  }
-
-  render() {
-    return html `
-        <section>
-            <header>
-
-            </header>
-            <main>
-
-            </main>
-        </section>
+class CardBabelFilm extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        display: block;
+      }
     `;
   }
 
+  static get properties() {
+    return {};
+  }
+
+  constructor() {
+    super();
+  }
+
+  render() {
+    return html`
+      <section>
+        <header>
+
+        </header>
+        <main>
+
+        </main>
+      </section>
+    `;
+  }
 }
 
-window.customElements.define('card-babel-film', cardBabelFilm);
+window.customElements.define('card-babel-film', CardBabelFilm);
+

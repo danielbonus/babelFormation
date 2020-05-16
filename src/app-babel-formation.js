@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
+import './elements/card-babel-film/card-babel-film';
 
-class appBabelFormation extends LitElement {
+class AppBabelFormation extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -9,13 +10,9 @@ class appBabelFormation extends LitElement {
     `;
   }
 
-  firstUpdated() {
-    super.firstUpdated();
-
-  }
-
   static get properties() {
-    return {};
+    return {
+    };
   }
 
   constructor() {
@@ -24,14 +21,16 @@ class appBabelFormation extends LitElement {
 
   render() {
     return html`
-        <header>
+      <header>
 
-        </header>
-        <main>
+      </header>
+      <main>
 
-        </main>
+      </main>
+
     `;
   }
 }
 
-window.customElements.define('app-babel-formation', appBabelFormation);
+window.customElements.define('app-babel-formation', AppBabelFormation);
+
