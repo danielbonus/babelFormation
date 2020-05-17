@@ -13,9 +13,6 @@ class CardBabelFilm extends LitElement {
     return {};
   }
 
-  constructor() {
-    super();
-  }
 
   render() {
     return html`
@@ -32,4 +29,3 @@ class CardBabelFilm extends LitElement {
 }
 
 window.customElements.define('card-babel-film', CardBabelFilm);
-

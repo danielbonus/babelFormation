@@ -15,10 +15,6 @@ class AppBabelFormation extends LitElement {
     };
   }
 
-  constructor() {
-    super();
-  }
-
   render() {
     return html`
       <header>
@@ -33,4 +29,3 @@ class AppBabelFormation extends LitElement {
 }
 
 window.customElements.define('app-babel-formation', AppBabelFormation);
-
