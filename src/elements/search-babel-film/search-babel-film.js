@@ -1,9 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
 
 class SearchBabelFilm extends LitElement {
-
-  static get  styles() {
-   return css `
+  static get styles() {
+    return css`
     ul, li {
       margin: 0;
       padding: 0;
@@ -58,21 +57,21 @@ class SearchBabelFilm extends LitElement {
   static get properties() {
     return {
 
-    }
+    };
   }
 
   _handleSubmitSearch(event) {
     event.preventDefault();
-    let value = this.shadowRoot.querySelector('#search').value;
-    this.dispatchEvent( new CustomEvent('on-submit-search', {
+    const { value } = this.shadowRoot.querySelector('#search');
+    this.dispatchEvent(new CustomEvent('on-submit-search', {
       bubbles: true,
       composed: true,
-      detail: value
-    }))
+      detail: value,
+    }));
   }
 
   render() {
-    return html `
+    return html`
       <nav>
         <ul>
             <li>
@@ -88,7 +87,6 @@ class SearchBabelFilm extends LitElement {
       </nav>
     `;
   }
-
 }
 
 window.customElements.define('search-babel-film', SearchBabelFilm);
