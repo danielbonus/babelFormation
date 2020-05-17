@@ -12,6 +12,13 @@ const { resolve } = require('path');
 const modeConfig = env => require(`./webpack/webpack.${env.mode}.js`)(env);
 
 const webcomponents = './node_modules/@webcomponents/webcomponentsjs';
+const assets = [
+  {
+    from: resolve('./src/assets'),
+    to: 'assets'
+  }
+];
+
 const polyfils = [
   {
     from: resolve(`${webcomponents}/webcomponents-*{js,map}`),
@@ -28,6 +35,7 @@ const polyfils = [
     to: 'vendor',
     flatten: true,
   },
+  ...assets
 ];
 
 const plugins = [
