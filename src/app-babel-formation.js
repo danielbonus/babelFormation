@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
-import './elements/card-babel-film/card-babel-film';
-import './elements/search-babel-film/search-babel-film';
+import './elements/card-babel-film/card-babel-film.js';
+import './elements/search-babel-film/search-babel-film.js';
 
 class AppBabelFormation extends LitElement {
   static get styles() {
