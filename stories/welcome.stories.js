@@ -1,10 +1,11 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { html } from 'lit-html';
-import '../src/app-babel-formation';
+import '../src/app-babel-formation.js';
 
 export default {
   title: 'Welcome',
 };
 
 export const Welcome = () => html`
-  <component-example></component-example>
+  <app-babel-formation></app-babel-formation>
 `;

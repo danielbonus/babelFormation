@@ -42,6 +42,7 @@ class AppBabelFormation extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('on-submit-search', this._handleSearch);
+    // eslint-disable-next-line no-return-assign
     this._handleApi().then(response => this.dataFilms = [...response.results]);
   }
 
@@ -50,6 +51,7 @@ class AppBabelFormation extends LitElement {
   }
 
   _handleSearch({ detail }) {
+    // eslint-disable-next-line no-return-assign
     this._handleApi(detail).then(response => this.dataFilms = [...response.results]);
   }
 
@@ -60,19 +62,20 @@ class AppBabelFormation extends LitElement {
       search !== '' ? '' : '/popular',
       search !== '' ? `&query=${search}` : '',
     ];
-    let response = await fetch(`https://api.themoviedb.org/3${_pathSearch[0]}/movie${_pathSearch[1]}?api_key=1fff964a23d455a3886e8ace72ddb7b3&language=en-US${_pathSearch[2]}&page=1`);
+    const response = await fetch(`https://api.themoviedb.org/3${_pathSearch[0]}/movie${_pathSearch[1]}?api_key=1fff964a23d455a3886e8ace72ddb7b3&language=en-US${_pathSearch[2]}&page=1`);
     return await response.json();
   }
 
 
   static get properties() {
     return {
-      dataFilms: { type: Array }
+      dataFilms: { type: Array },
     };
   }
 
   constructor() {
     super();
+    this.dataFilms = [];
   }
 
   render() {
@@ -81,7 +84,7 @@ class AppBabelFormation extends LitElement {
             <search-babel-film></search-babel-film>
         </header>
         <main>
-            ${this.dataFilms ? this.dataFilms.map( film => (
+            ${this.dataFilms ? this.dataFilms.map(film => (
               html `
                <div class="container-card">
                 <card-babel-film

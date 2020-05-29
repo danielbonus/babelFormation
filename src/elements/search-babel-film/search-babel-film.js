@@ -54,12 +54,6 @@ class SearchBabelFilm extends LitElement {
   `;
   }
 
-  static get properties() {
-    return {
-
-    };
-  }
-
   _handleSubmitSearch(event) {
     event.preventDefault();
     const { value } = this.shadowRoot.querySelector('#search');

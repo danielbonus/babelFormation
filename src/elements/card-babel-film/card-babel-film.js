@@ -34,12 +34,15 @@ class CardBabelFilm extends LitElement {
     return {
       title: { type: String },
       description: { type: String },
-      img: { type: String }
+      img: { type: String },
     };
   }
 
   constructor() {
     super();
+    this.title = '';
+    this.description = '';
+    this.img = '';
   }
 
   render() {
